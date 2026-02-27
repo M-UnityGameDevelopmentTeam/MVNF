@@ -1,0 +1,68 @@
+{
+	"phrases": [
+		{
+			"type": "text",
+			"name": "Godot",
+			"text": "AAAA",
+			"next": 1.0
+		},
+		{
+			"type": "text",
+			"name": "Goot",
+			"text": "DDDD",
+			"next": 2.0
+		},
+		{
+			"type": "text",
+			"name": "Good",
+			"text": "DICT",
+			"next": 3.0
+		},
+		{
+			"type": "text",
+			"name": "GHDDD",
+			"text": "HDD",
+			"next": 4.0
+		},
+		{
+			"type": "text",
+			"name": "Goot",
+			"text": "12/08/2025",
+			"next": 5.0
+		},
+		{
+			"type": "choice",
+			"name": "Goot",
+			"choices": {
+				"Use": 6,
+				"After": 7,
+				"Free": 8
+			},
+			"text": "12/08/2025"
+		},
+		{
+			"type": "text",
+			"name": "USE after free",
+			"text": "Copyright (c) 2025 Author. All Rights Reserved.",
+			"next": 6
+		},
+		{
+			"type": "text",
+			"name": "use AFTER free",
+			"text": "2025-12-08 10:31",
+			"next": 7
+		},
+		{
+			"type": "text",
+			"name": "use after FREE",
+			"text": "DDDD Copyright (c) 2025 Author. All Rights Reserved. Copyright (c) 2025 Author. All Rights Reserved. Copyright (c) 2025 Author. All Rights Reserved. Copyright (c) 2025 Author. All Rights Reserved. Copyright (c) 2025 Author. All Rights Reserved. Copyright (c) 2025 Author. All Rights Reserved.",
+			"next": 8
+		},
+		{
+			"type": "text",
+			"name": "Good",
+			"text": "End",
+			"next": ""
+		}
+	]
+}
