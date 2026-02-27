@@ -53,7 +53,7 @@ grow_vertical = 2
 texture = ExtResource("1_0fbet")
 stretch_mode = 5
 
-[node name="Dialog" type="Panel" parent="." unique_id=62147116 node_paths=PackedStringArray("NextButton", "BackButton", "ExitButton", "ChoicePanel", "ChoiceContainer", "text", "character_name_text")]
+[node name="Dialog" type="Panel" parent="." unique_id=62147116 node_paths=PackedStringArray("NextButton", "BackButton", "ExitButton", "ChoicePanel", "ChoiceContainer", "DialogPanel", "text", "character_name_text")]
 layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -71,6 +71,7 @@ ExitButton = NodePath("HBoxContainer/Exit")
 ChoiceButton = ExtResource("7_iy58a")
 ChoicePanel = NodePath("../Choices")
 ChoiceContainer = NodePath("../Choices/VBoxContainer")
+DialogPanel = NodePath(".")
 text = NodePath("Text")
 character_name_text = NodePath("Panel/Name")
 text_speed = 0.01
@@ -163,22 +164,27 @@ vertical_alignment = 1
 [node name="Choices" type="Panel" parent="." unique_id=696739985]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = -344.0
-offset_right = -40.0
-offset_bottom = 16.000122
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 26.0
+offset_right = -26.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Choices" unique_id=1764624832]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 26.0
+offset_right = -26.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1

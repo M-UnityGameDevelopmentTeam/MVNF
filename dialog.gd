@@ -1,4 +1,4 @@
-class_name DialogPanel
+class_name StoryPanel
 
 extends Panel
 
@@ -9,6 +9,7 @@ signal proceed(type: String)
 @export var ChoiceButton: PackedScene
 @export var ChoicePanel: Panel
 @export var ChoiceContainer: BoxContainer
+@export var DialogPanel: Panel
 @export var text: RichTextLabel
 @export var character_name_text: RichTextLabel
 @export var text_speed := 0.1
@@ -43,6 +44,8 @@ func show_phrase() -> bool:
 
 func handle_choice() -> bool:
 	character_name_text.text = phrase.name
+	ChoiceContainer.mouse_filter = Control.MOUSE_FILTER_STOP
+	await create_tween().tween_property(DialogPanel, "modulate:a", 0, 0.25).finished
 	for choice in ChoiceContainer.get_children():
 		choice.queue_free()
 	for i in phrase.choices:
@@ -51,7 +54,6 @@ func handle_choice() -> bool:
 		temp_choice_button.text = i;
 		temp_choice_button.pressed.connect(Callable(self, "next").bind(phrase.choices[i]))
 	await create_tween().tween_property(ChoicePanel, "modulate:a", 1, 0.25).finished
-	
 	return true
 
 func handle_phrase() -> bool:
@@ -94,16 +96,19 @@ func next(next_index: int = -1) -> void:
 		is_busy = false
 		return
 	if next_index != -1:
+		ChoiceContainer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		current_text_speed = text_speed
 		current_phrases.resize(next_index+1)
 		current_phrases.insert(next_index, StoryJSON.data.phrases[next_index])
+		print(current_phrases[next_index].next)
 		current_index = next_index
-		await create_tween().tween_property(ChoicePanel, "modulate:a", 0, 0.25).finished
+		create_tween().tween_property(ChoicePanel, "modulate:a", 0, 0.25)
+		await create_tween().tween_property(DialogPanel, "modulate:a", 1, 0.25).finished
 		for choice in ChoiceContainer.get_children():
 			choice.queue_free()
-	elif typeof(phrase.next) == TYPE_FLOAT or typeof(phrase.next) == TYPE_INT:
+	elif phrase.has("next"):
 		current_text_speed = text_speed
-		current_phrases.append(StoryJSON.data.phrases[phrase.next])
+		current_phrases.append(StoryJSON.data.phrases[int(phrase.next)])
 		current_index = phrase.next
 	else:
 		running = false
